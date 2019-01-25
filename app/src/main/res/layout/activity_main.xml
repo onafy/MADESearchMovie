@@ -13,13 +13,13 @@
         android:weightSum="1"
         >
         <EditText
-            android:id="@+id/edit_kota"
+            android:id="@+id/et_title"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:hint="Movie Title"
             android:layout_weight="0.8"/>
         <Button
-            android:id="@+id/btn_kota"
+            android:id="@+id/btn_searchTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SEARCH"

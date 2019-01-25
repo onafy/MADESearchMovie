@@ -7,7 +7,7 @@
     <ImageView
         android:layout_width="95dp"
         android:layout_height="130dp"
-        android:id="@+id/img_item_user"
+        android:id="@+id/img_movie_poster"
         android:layout_centerVertical="true"
         android:layout_alignParentLeft="true"/>
     <LinearLayout
@@ -22,18 +22,18 @@
             android:layout_height="wrap_content"
             android:text="Movie Title"
             android:layout_marginBottom="8dp"
-            android:layout_toRightOf="@id/img_item_user"
+            android:layout_toRightOf="@+id/img_movie_poster"
             android:layout_centerVertical="true"
             android:textSize="20sp"
             android:textStyle="bold"/>
         <TextView
-            android:id="@+id/tv_movie_desc"
+            android:id="@+id/tv_movie_overview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:text="Movie Description"
             android:layout_marginBottom="8dp"
-            android:layout_toRightOf="@id/img_item_user"
+            android:layout_toRightOf="@+id/img_movie_poster"
             android:layout_centerVertical="true"
-            android:textSize="15sp"/>
+            android:textSize="13sp"/>
     </LinearLayout>
 </LinearLayout>
