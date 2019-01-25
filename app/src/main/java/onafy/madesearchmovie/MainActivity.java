@@ -42,7 +42,7 @@ public class MainActivity extends AppCompatActivity implements LoaderManager.Loa
         Bundle bundle = new Bundle();
         bundle.putString(EXTRAS_TITLE, title);
 
-        //Inisiasi dari Loader, dimasukkan ke dalam onCreate
+        //Inisiasi dari Loader, dimasukkan ke dalam onCreatee
         getLoaderManager().initLoader(0, bundle, this);
     }
 
