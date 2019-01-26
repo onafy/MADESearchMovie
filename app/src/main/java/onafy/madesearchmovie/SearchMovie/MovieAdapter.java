@@ -1,4 +1,4 @@
-package onafy.madesearchmovie;
+package onafy.madesearchmovie.SearchMovie;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,22 +12,24 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
+import onafy.madesearchmovie.SearchMovie.Movie;
+import onafy.madesearchmovie.R;
+
 public class MovieAdapter extends BaseAdapter {
 
-    private ArrayList<MovieModel> mData = new ArrayList<>();
+    private ArrayList<Movie> mData = new ArrayList<>();
     private LayoutInflater mInflater;
     private Context context;
 
-    public MovieAdapter(Context context) {
+    public MovieAdapter(Context context, ArrayList<Movie> items) {
         this.context = context;
+        mData = items;
+        notifyDataSetChanged();
         mInflater = (LayoutInflater)context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
     }
 
-    public void setData(ArrayList<MovieModel> items){
-        mData = items;
-        notifyDataSetChanged();
-    }
-    public void addItem(final MovieModel item) {
+
+    public void addItem(final Movie item) {
         mData.add(item);
         notifyDataSetChanged();
     }
@@ -48,7 +50,7 @@ public class MovieAdapter extends BaseAdapter {
         return mData.size();
     }
     @Override
-    public MovieModel getItem(int position) {
+    public Movie getItem(int position) {
         return mData.get(position);
     }
     @Override
@@ -57,22 +59,22 @@ public class MovieAdapter extends BaseAdapter {
     }
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
-        ViewHolder holder = null;
+        MovieAdapter.ViewHolder holder = null;
         if (convertView == null) {
-            holder = new ViewHolder();
+            holder = new MovieAdapter.ViewHolder();
             convertView = mInflater.inflate(R.layout.item_row_movie, null);
             holder.tv_movieName= (TextView)convertView.findViewById(R.id.tv_movie_name);
             holder.tv_movieOverview = (TextView)convertView.findViewById(R.id.tv_movie_overview);
             holder.img_moviePoster = (ImageView)convertView.findViewById(R.id.img_movie_poster);
             convertView.setTag(holder);
         } else {
-            holder = (ViewHolder) convertView.getTag();
+            holder = (MovieAdapter.ViewHolder) convertView.getTag();
         }
         holder.tv_movieName.setText(mData.get(position).getMovieTitle());
         holder.tv_movieOverview.setText(mData.get(position).getMovieOverview());
         String imgPoster = "https://image.tmdb.org/t/p/w342" + mData.get(position).getMoviePoster();
         Glide.with(context).load(imgPoster).into(holder.img_moviePoster);
-     //   holder.img_moviePoster.setText(mData.get(position).getMo());
+        //   holder.img_moviePoster.setText(mData.get(position).getMo());
         return convertView;
     }
     private static class ViewHolder {

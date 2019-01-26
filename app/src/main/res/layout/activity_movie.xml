@@ -1,11 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+    <ProgressBar
+        android:layout_centerHorizontal="true"
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal" />
+
     <LinearLayout
+        android:padding="10dp"
+        android:id="@+id/linearhori"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -15,19 +24,23 @@
         <EditText
             android:id="@+id/et_title"
             android:layout_width="0dp"
+            android:layout_marginRight="5dp"
             android:layout_height="wrap_content"
             android:hint="Movie Title"
-            android:layout_weight="0.8"/>
+            android:layout_weight="0.9"/>
         <Button
             android:id="@+id/btn_searchTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="SEARCH"
-            android:layout_weight="0.2"
+            android:background="@drawable/buttonshape"
+            android:layout_weight="0.1"
             />
     </LinearLayout>
     <ListView
+        android:padding="10dp"
+        android:layout_below="@id/linearhori"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/listView"/>
-</LinearLayout>
+</RelativeLayout>

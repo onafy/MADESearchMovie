@@ -1,8 +1,8 @@
-package onafy.madesearchmovie;
+package onafy.madesearchmovie.SearchMovie;
 
 import org.json.JSONObject;
 
-public class MovieModel {
+public class Movie {
     private String movieTitle;
     private String movieOverview;
     private String moviePoster;
@@ -10,7 +10,7 @@ public class MovieModel {
     private String movieLanguage;
     private String[] movieGenre;
     private String movieRelease;
-    public  MovieModel(JSONObject object){
+    public  Movie(JSONObject object){
         try {
             String movieTitle = object.getString("title");
             String movieOverview = object.getString("overview");
