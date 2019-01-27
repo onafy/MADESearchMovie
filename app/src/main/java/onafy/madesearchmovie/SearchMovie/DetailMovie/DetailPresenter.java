@@ -1,4 +1,4 @@
-package onafy.madesearchmovie.SearchMovie;
+package onafy.madesearchmovie.SearchMovie.DetailMovie;
 
 import android.util.Log;
 
@@ -14,27 +14,27 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import onafy.madesearchmovie.SearchMovie.Model.Movie;
+import onafy.madesearchmovie.SearchMovie.Model.MovieDetail;
 import onafy.madesearchmovie.SearchMovie.Util.EndPoint;
 
-public final class MoviePresenter {
-    private final MovieView view;
+public class DetailPresenter {
+    private final DetailView view;
 
 
 
-    public MoviePresenter(MovieView view) {
+    public DetailPresenter(DetailView view) {
         this.view = view;
     }
 
 
-    public MovieView getView() {
+    public DetailView getView() {
         return view;
     }
 
 
-    public void getMovieItems(String title){
-        view.showLoading();
-        final ArrayList<Movie> movieItems = new ArrayList<>();
-        StringRequest getRequest = new StringRequest(Request.Method.GET, EndPoint.SEARCH_MOVIE+ title,
+    public void getDetail(String idMovie){
+        final ArrayList<MovieDetail> movieDetails = new ArrayList<>();
+        StringRequest getRequest = new StringRequest(Request.Method.GET, EndPoint.DETAIL_MOVIE_1+ idMovie + EndPoint.DETAIL_MOVIE_2,
                 new Response.Listener<String>()
                 {
                     @Override
@@ -45,14 +45,11 @@ public final class MoviePresenter {
                         JSONObject jsonObject = null;
                         try {
                             jsonObject = new JSONObject(responses);
-                            JSONArray jsonArray = jsonObject.getJSONArray("results");
-                            for(int i=0; i<jsonArray.length(); i++){
-                                JSONObject movies = jsonArray.getJSONObject(i);
-                                Movie movieModel = new Movie(movies);
-                                movieItems.add(movieModel);
-                                view.getMovieList(movieItems);
+                             MovieDetail movieDetail = new MovieDetail(jsonObject);
+                             movieDetails.add(movieDetail);
+                             Log.d("List MovieDetails", String.valueOf(movieDetails));
+                              view.getDetailList(movieDetails);
 
-                            }
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
@@ -67,8 +64,7 @@ public final class MoviePresenter {
                     }
                 }
         );
-        view.hideLoading();
-        view.requestMovie(getRequest);
+        view.requestDetail(getRequest);
     }
 
 }
