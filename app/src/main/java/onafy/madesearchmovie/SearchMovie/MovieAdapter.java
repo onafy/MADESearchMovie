@@ -12,8 +12,8 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-import onafy.madesearchmovie.SearchMovie.Model.Movie;
 import onafy.madesearchmovie.R;
+import onafy.madesearchmovie.SearchMovie.Model.Movie;
 
 public class MovieAdapter extends BaseAdapter {
 

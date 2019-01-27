@@ -1,9 +1,9 @@
 package onafy.madesearchmovie.SearchMovie.DetailMovie;
 
 import android.content.Intent;
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.widget.ImageView;
@@ -13,22 +13,23 @@ import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 import com.bumptech.glide.Glide;
-import jp.wasabeef.glide.transformations.BlurTransformation;
 
 import java.util.List;
 
 import de.hdodenhof.circleimageview.CircleImageView;
+import jp.wasabeef.glide.transformations.BlurTransformation;
 import onafy.madesearchmovie.R;
+import onafy.madesearchmovie.SearchMovie.Model.Genre;
 import onafy.madesearchmovie.SearchMovie.Model.MovieDetail;
+
 import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
 
 
 
 public class DetailActivity extends AppCompatActivity implements DetailView {
-    TextView title, tagline, rating, duration, language, release, overviewe;
+    TextView title, tagline, rating, duration, language, release, overviewe, genre;
     CircleImageView poster;
-   ImageView blurPoster;
-
+    ImageView blurPoster;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +74,7 @@ public class DetailActivity extends AppCompatActivity implements DetailView {
 
     @Override
     public void getDetailList(List<MovieDetail> lists) {
+
         poster = (CircleImageView) findViewById(R.id.img_detail);
         blurPoster = (ImageView) findViewById(R.id.blur);
         title = (TextView) findViewById(R.id.tv_detail_title);
@@ -94,6 +96,22 @@ public class DetailActivity extends AppCompatActivity implements DetailView {
         language.setText(lists.get(0).getMovieLanguage());
         release.setText(lists.get(0).getMovieRelease());
         overviewe.setText(lists.get(0).getMovieOverview());
+
+    }
+
+    @Override
+    public void getGenre(List<Genre> genres) {
+        genre = (TextView) findViewById(R.id.tv_detail_genre);
+        genre.setText("");
+        for(int a=0; a<genres.size();a++){
+            Log.d("genressize", String.valueOf(genres.size()));
+            if(a==0)
+            {
+                genre.append(genres.get(a).getGenreName()) ;;
+            }else {
+                genre.append(", \n" + genres.get(a).getGenreName());
+            }
+        }
 
     }
 

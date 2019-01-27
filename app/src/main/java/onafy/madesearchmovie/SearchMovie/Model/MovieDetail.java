@@ -1,6 +1,5 @@
 package onafy.madesearchmovie.SearchMovie.Model;
 
-import org.json.JSONArray;
 import org.json.JSONObject;
 
 public class MovieDetail {
