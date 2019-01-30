@@ -17,14 +17,16 @@ import com.android.volley.toolbox.Volley;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import onafy.madesearchmovie.Model.Movie;
 
 public class UpcomingActivity extends AppCompatActivity implements UpcomingView{
-    RecyclerView recyclerView;
+    @BindView(R.id.recycler_view)
+        RecyclerView recyclerView;
+
     ArrayList<Movie> movieUpcomingItems;
     UpcomingAdapter adapter;
-    EditText etTitle;
-    Button btnSearch;
     String title;
     UpcomingPresenter presenter;
 
@@ -32,13 +34,16 @@ public class UpcomingActivity extends AppCompatActivity implements UpcomingView{
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_upcoming);
+        ButterKnife.bind(this);
 
+        movieUpcomingItems = new ArrayList<>();
 
-        setupVar();
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         adapter = new UpcomingAdapter(this);
         adapter.setListMovieUpcoming(movieUpcomingItems);
+
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
@@ -69,16 +74,6 @@ public class UpcomingActivity extends AppCompatActivity implements UpcomingView{
                 return super.onOptionsItemSelected(item);
         }
     }
-
-
-    public void setupVar(){
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        etTitle = (EditText) findViewById(R.id.et_title);
-        btnSearch = (Button) findViewById(R.id.btn_searchTitle);
-        movieUpcomingItems = new ArrayList<>();
-
-    }
-
 
 
 

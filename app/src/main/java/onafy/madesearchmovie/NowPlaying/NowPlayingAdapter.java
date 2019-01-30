@@ -13,6 +13,8 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import onafy.madesearchmovie.Model.Movie;
 import onafy.madesearchmovie.R;
 import onafy.madesearchmovie.Util.EndPoint;
@@ -57,15 +59,16 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.No
     }
 
     public class NowPlayingViewHolder extends RecyclerView.ViewHolder {
-        TextView tv_movieName;
-        TextView tv_movieOverview;
-        ImageView img_moviePoster;
+       @BindView(R.id.tv_movie_name)
+            TextView tv_movieName;
+        @BindView(R.id.tv_movie_overview)
+                TextView tv_movieOverview;
+        @BindView(R.id.img_movie_poster)
+                ImageView img_moviePoster;
 
         NowPlayingViewHolder(@NonNull View convertView) {
             super(convertView);
-            tv_movieName = (TextView) convertView.findViewById(R.id.tv_movie_name);
-            tv_movieOverview = (TextView) convertView.findViewById(R.id.tv_movie_overview);
-            img_moviePoster = (ImageView) convertView.findViewById(R.id.img_movie_poster);
+            ButterKnife.bind(this, convertView);
         }
     }
 }

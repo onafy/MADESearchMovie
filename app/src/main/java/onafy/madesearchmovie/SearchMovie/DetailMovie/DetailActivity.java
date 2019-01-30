@@ -16,6 +16,8 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import jp.wasabeef.glide.transformations.BlurTransformation;
 import onafy.madesearchmovie.R;
@@ -28,13 +30,33 @@ import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
 
 
 public class DetailActivity extends AppCompatActivity implements DetailView {
-    TextView title, tagline, rating, duration, language, release, overviewe, genre;
+    @BindView(R.id.tv_detail_title)
+    TextView title;
+    @BindView(R.id.tv_detail_rating)
+    TextView rating;
+    @BindView(R.id.tv_detail_duration)
+    TextView duration;
+    @BindView(R.id.tv_detail_language)
+    TextView language;
+    @BindView(R.id.tv_detail_release)
+    TextView release;
+    @BindView(R.id.tv_detail_overview)
+    TextView overviewe;
+    @BindView(R.id.tv_detail_shortoverview)
+    TextView tagline;
+    @BindView(R.id.tv_detail_genre)
+    TextView genre;
+    @BindView(R.id.img_detail)
     CircleImageView poster;
+    @BindView(R.id.blur)
     ImageView blurPoster;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_detail);
+        ButterKnife.bind(this);
 
         Intent i = getIntent();
 
@@ -77,21 +99,10 @@ public class DetailActivity extends AppCompatActivity implements DetailView {
 
     @Override
     public void getDetailList(List<MovieDetail> lists) {
-
-        poster = (CircleImageView) findViewById(R.id.img_detail);
-        blurPoster = (ImageView) findViewById(R.id.blur);
-        title = (TextView) findViewById(R.id.tv_detail_title);
-        tagline = (TextView) findViewById(R.id.tv_detail_shortoverview);
-        rating = (TextView) findViewById(R.id.tv_detail_rating);
-        duration = (TextView) findViewById(R.id.tv_detail_duration);
-        language = (TextView) findViewById(R.id.tv_detail_language);
-        release = (TextView) findViewById(R.id.tv_detail_release);
-        overviewe = (TextView) findViewById(R.id.tv_detail_overview);
-
-
         String path = EndPoint.IMG_PATH + lists.get(0).getMoviePoster();
         Glide.with(this).load(path).into(poster);
         Glide.with(this).asBitmap().load(path).apply(bitmapTransform(new BlurTransformation(6, 3))).into(blurPoster);
+
         title.setText(lists.get(0).getMovieTitle());
         tagline.setText(lists.get(0).getMovieTagline());
         rating.setText(lists.get(0).getMovieRating());
@@ -104,7 +115,6 @@ public class DetailActivity extends AppCompatActivity implements DetailView {
 
     @Override
     public void getGenre(List<Genre> genres) {
-        genre = (TextView) findViewById(R.id.tv_detail_genre);
         genre.setText("");
         for(int a=0; a<genres.size();a++){
             Log.d("genressize", String.valueOf(genres.size()));

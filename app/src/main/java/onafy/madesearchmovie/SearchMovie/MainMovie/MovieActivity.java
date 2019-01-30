@@ -22,6 +22,9 @@ import com.android.volley.toolbox.Volley;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
+import butterknife.OnClick;
 import onafy.madesearchmovie.NowPlaying.NowPlayingActivity;
 import onafy.madesearchmovie.R;
 import onafy.madesearchmovie.SearchMovie.DetailMovie.DetailActivity;
@@ -30,25 +33,35 @@ import onafy.madesearchmovie.UpcomingActivity;
 import onafy.madesearchmovie.Util.ItemClickSupport;
 
 public class MovieActivity extends AppCompatActivity implements MovieView{
-    RecyclerView recyclerView;
+    @BindView(R.id.recycler_view)
+        RecyclerView recyclerView;
+    @BindView(R.id.et_title)
+        EditText etTitle;
+    @BindView(R.id.btn_searchTitle)
+        Button btnSearch;
+    @BindView(R.id.progressBar)
+        ProgressBar progressBar;
+
     ArrayList<Movie> movieItems;
     ListMovieAdapter adapter;
-    EditText etTitle;
-    Button btnSearch;
     String title;
     MoviePresenter presenter;
-    ProgressBar progressBar;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_movie);
+        ButterKnife.bind(this);
 
-        setupVar();
+        movieItems = new ArrayList<>();
+
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         adapter = new ListMovieAdapter(this);
         adapter.setListMovie(movieItems);
+
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
@@ -60,17 +73,6 @@ public class MovieActivity extends AppCompatActivity implements MovieView{
         presenter = new MoviePresenter(this);
         presenter.getMovieItems(title);
 
-
-        btnSearch.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String title = etTitle.getText().toString();
-                if (TextUtils.isEmpty(title)) {
-                    title = "a";
-                }
-                presenter.getMovieItems(title);
-            }
-        });
 
 
         ItemClickSupport.addTo(recyclerView).setOnItemClickListener(new ItemClickSupport.OnItemClickListener() {
@@ -84,14 +86,15 @@ public class MovieActivity extends AppCompatActivity implements MovieView{
     }
 
 
-    public void setupVar(){
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        etTitle = (EditText) findViewById(R.id.et_title);
-        btnSearch = (Button) findViewById(R.id.btn_searchTitle);
-        movieItems = new ArrayList<>();
-        progressBar = (ProgressBar) findViewById(R.id.progressBar);
-
+    @OnClick(R.id.btn_searchTitle)
+    public void onButtonClick(View view) {
+        String title = etTitle.getText().toString();
+        if (TextUtils.isEmpty(title)) {
+            title = "a";
+        }
+        presenter.getMovieItems(title);
     }
+
 
 
     @Override

@@ -17,15 +17,17 @@ import com.android.volley.toolbox.Volley;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import onafy.madesearchmovie.Model.Movie;
 import onafy.madesearchmovie.R;
 
 public class NowPlayingActivity extends AppCompatActivity implements NowPlayingView{
-    RecyclerView recyclerView;
+    @BindView(R.id.recycler_view)
+        RecyclerView recyclerView;
+
     ArrayList<Movie> movieNPItems;
     NowPlayingAdapter adapter;
-    EditText etTitle;
-    Button btnSearch;
     String title;
     NowPlayingPresenter presenter;
 
@@ -33,15 +35,17 @@ public class NowPlayingActivity extends AppCompatActivity implements NowPlayingV
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_now_playing);
+        ButterKnife.bind(this);
 
-        setupVar();
+        movieNPItems = new ArrayList<>();
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         adapter = new NowPlayingAdapter(this);
         adapter.setListMovie(movieNPItems);
+
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
-
 
         presenter = new NowPlayingPresenter(this);
         presenter.getMovieNPItems();
@@ -70,14 +74,6 @@ public class NowPlayingActivity extends AppCompatActivity implements NowPlayingV
         }
     }
 
-
-    public void setupVar(){
-        recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
-        etTitle = (EditText) findViewById(R.id.et_title);
-        btnSearch = (Button) findViewById(R.id.btn_searchTitle);
-        movieNPItems = new ArrayList<>();
-
-    }
 
     @Override
     public void requestMovieNP(StringRequest data) {
