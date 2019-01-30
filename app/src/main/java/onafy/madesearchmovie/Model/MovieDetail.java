@@ -1,4 +1,4 @@
-package onafy.madesearchmovie.SearchMovie.Model;
+package onafy.madesearchmovie.Model;
 
 import org.json.JSONObject;
 

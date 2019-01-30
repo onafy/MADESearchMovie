@@ -13,9 +13,9 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import onafy.madesearchmovie.SearchMovie.Model.Genre;
-import onafy.madesearchmovie.SearchMovie.Model.MovieDetail;
-import onafy.madesearchmovie.SearchMovie.Util.EndPoint;
+import onafy.madesearchmovie.Model.Genre;
+import onafy.madesearchmovie.Model.MovieDetail;
+import onafy.madesearchmovie.Util.EndPoint;
 
 public class DetailPresenter {
     private final DetailView view;

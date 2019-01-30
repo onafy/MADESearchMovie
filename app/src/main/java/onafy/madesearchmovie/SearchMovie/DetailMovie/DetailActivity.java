@@ -19,8 +19,9 @@ import java.util.List;
 import de.hdodenhof.circleimageview.CircleImageView;
 import jp.wasabeef.glide.transformations.BlurTransformation;
 import onafy.madesearchmovie.R;
-import onafy.madesearchmovie.SearchMovie.Model.Genre;
-import onafy.madesearchmovie.SearchMovie.Model.MovieDetail;
+import onafy.madesearchmovie.Model.Genre;
+import onafy.madesearchmovie.Model.MovieDetail;
+import onafy.madesearchmovie.Util.EndPoint;
 
 import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
 
@@ -48,8 +49,10 @@ public class DetailActivity extends AppCompatActivity implements DetailView {
 
     private void showActionBar(){
         ActionBar actionbar = getSupportActionBar();
-        actionbar.setTitle("Detail Movie");
-        actionbar.setDisplayHomeAsUpEnabled(true);
+        if(actionbar != null) {
+            actionbar.setTitle("Detail Movie");
+            actionbar.setDisplayHomeAsUpEnabled(true);
+        }
     }
 
 
@@ -86,7 +89,7 @@ public class DetailActivity extends AppCompatActivity implements DetailView {
         overviewe = (TextView) findViewById(R.id.tv_detail_overview);
 
 
-        String path = "https://image.tmdb.org/t/p/w342" + lists.get(0).getMoviePoster();
+        String path = EndPoint.IMG_PATH + lists.get(0).getMoviePoster();
         Glide.with(this).load(path).into(poster);
         Glide.with(this).asBitmap().load(path).apply(bitmapTransform(new BlurTransformation(6, 3))).into(blurPoster);
         title.setText(lists.get(0).getMovieTitle());

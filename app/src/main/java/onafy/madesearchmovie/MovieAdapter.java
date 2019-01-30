@@ -1,4 +1,4 @@
-package onafy.madesearchmovie.SearchMovie;
+package onafy.madesearchmovie;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -12,8 +12,8 @@ import com.bumptech.glide.Glide;
 
 import java.util.ArrayList;
 
-import onafy.madesearchmovie.R;
-import onafy.madesearchmovie.SearchMovie.Model.Movie;
+import onafy.madesearchmovie.Model.Movie;
+import onafy.madesearchmovie.Util.EndPoint;
 
 public class MovieAdapter extends BaseAdapter {
 
@@ -85,10 +85,9 @@ public class MovieAdapter extends BaseAdapter {
             holder = (ViewHolder) convertView.getTag();
         }
 
-
         holder.tv_movieName.setText(mData.get(position).getMovieTitle());
         holder.tv_movieOverview.setText(mData.get(position).getMovieOverview());
-        String imgPoster = "https://image.tmdb.org/t/p/w342" + mData.get(position).getMoviePoster();
+        String imgPoster = EndPoint.IMG_PATH + mData.get(position).getMoviePoster();
         Glide.with(context).load(imgPoster).into(holder.img_moviePoster);
 
         return convertView;

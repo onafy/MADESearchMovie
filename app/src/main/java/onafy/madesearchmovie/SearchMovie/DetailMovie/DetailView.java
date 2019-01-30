@@ -4,8 +4,8 @@ import com.android.volley.toolbox.StringRequest;
 
 import java.util.List;
 
-import onafy.madesearchmovie.SearchMovie.Model.Genre;
-import onafy.madesearchmovie.SearchMovie.Model.MovieDetail;
+import onafy.madesearchmovie.Model.Genre;
+import onafy.madesearchmovie.Model.MovieDetail;
 
 public interface DetailView {
     void requestDetail(StringRequest data);
