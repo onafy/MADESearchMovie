@@ -1,4 +1,4 @@
-package onafy.madesearchmovie;
+package onafy.madesearchmovie.NowPlaying;
 
 import android.util.Log;
 

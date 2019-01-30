@@ -1,4 +1,4 @@
-package onafy.madesearchmovie;
+package onafy.madesearchmovie.NowPlaying;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -14,6 +14,7 @@ import com.bumptech.glide.Glide;
 import java.util.ArrayList;
 
 import onafy.madesearchmovie.Model.Movie;
+import onafy.madesearchmovie.R;
 import onafy.madesearchmovie.Util.EndPoint;
 
 public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.NowPlayingViewHolder> {

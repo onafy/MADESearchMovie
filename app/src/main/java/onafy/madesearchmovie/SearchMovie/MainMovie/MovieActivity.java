@@ -22,10 +22,11 @@ import com.android.volley.toolbox.Volley;
 import java.util.ArrayList;
 import java.util.List;
 
-import onafy.madesearchmovie.NowPlayingActivity;
+import onafy.madesearchmovie.NowPlaying.NowPlayingActivity;
 import onafy.madesearchmovie.R;
 import onafy.madesearchmovie.SearchMovie.DetailMovie.DetailActivity;
 import onafy.madesearchmovie.Model.Movie;
+import onafy.madesearchmovie.UpcomingActivity;
 import onafy.madesearchmovie.Util.ItemClickSupport;
 
 public class MovieActivity extends AppCompatActivity implements MovieView{
@@ -135,7 +136,7 @@ public class MovieActivity extends AppCompatActivity implements MovieView{
                 startActivity(i);
                 return true;
             case R.id.upcoming:
-                Intent k = new Intent(this,DetailActivity.class);
+                Intent k = new Intent(this,UpcomingActivity.class);
                 startActivity(k);
                 return true;
             default:

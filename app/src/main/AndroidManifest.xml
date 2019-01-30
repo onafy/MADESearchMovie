@@ -26,7 +26,8 @@
             android:configChanges="orientation"
             android:screenOrientation="portrait"
             android:theme="@style/ActionBarInclude" />
-        <activity android:name=".NowPlayingActivity"></activity>
+        <activity android:name=".NowPlaying.NowPlayingActivity" />
+        <activity android:name=".UpcomingActivity"></activity>
     </application>
 
 </manifest>

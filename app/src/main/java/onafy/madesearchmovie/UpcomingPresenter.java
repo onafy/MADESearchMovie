@@ -1,4 +1,4 @@
-package onafy.madesearchmovie.SearchMovie;
+package onafy.madesearchmovie;
 
 import android.util.Log;
 
@@ -13,28 +13,24 @@ import org.json.JSONObject;
 
 import java.util.ArrayList;
 
-import onafy.madesearchmovie.SearchMovie.Model.Movie;
-import onafy.madesearchmovie.SearchMovie.Util.EndPoint;
+import onafy.madesearchmovie.Model.Movie;
+import onafy.madesearchmovie.NowPlaying.NowPlayingView;
+import onafy.madesearchmovie.Util.EndPoint;
 
-public final class MoviePresenter {
-    private final MovieView view;
+public class UpcomingPresenter {
+    private final UpcomingView view;
 
-
-
-    public MoviePresenter(MovieView view) {
+    public UpcomingPresenter(UpcomingView view) {
         this.view = view;
     }
 
-
-    public MovieView getView() {
+    public UpcomingView getView() {
         return view;
     }
 
-
-    public void getMovieItems(String title){
-        view.showLoading();
-        final ArrayList<Movie> movieItems = new ArrayList<>();
-        StringRequest getRequest = new StringRequest(Request.Method.GET, EndPoint.SEARCH_MOVIE+ title,
+    public void getMovieUpcomingItems(){
+        final ArrayList<Movie> movieUpcomingItems = new ArrayList<>();
+        StringRequest getRequest = new StringRequest(Request.Method.GET, EndPoint.UPCOMING,
                 new Response.Listener<String>()
                 {
                     @Override
@@ -48,9 +44,9 @@ public final class MoviePresenter {
                             JSONArray jsonArray = jsonObject.getJSONArray("results");
                             for(int i=0; i<jsonArray.length(); i++){
                                 JSONObject movies = jsonArray.getJSONObject(i);
-                                Movie movieModel = new Movie(movies);
-                                movieItems.add(movieModel);
-                                view.getMovieList(movieItems);
+                                Movie movieUpcomingModel = new Movie(movies);
+                                movieUpcomingItems.add(movieUpcomingModel);
+                                view.getMovieUpcomingList(movieUpcomingItems);
 
                             }
                         } catch (JSONException e) {
@@ -67,8 +63,8 @@ public final class MoviePresenter {
                     }
                 }
         );
-        view.hideLoading();
-        view.requestMovie(getRequest);
+        view.requestMovieUpcoming(getRequest);
     }
 
 }
+

@@ -19,41 +19,42 @@ import java.util.List;
 
 import onafy.madesearchmovie.Model.Movie;
 
-public class NowPlayingActivity extends AppCompatActivity implements NowPlayingView{
+public class UpcomingActivity extends AppCompatActivity implements UpcomingView{
     RecyclerView recyclerView;
-    ArrayList<Movie> movieNPItems;
-    NowPlayingAdapter adapter;
+    ArrayList<Movie> movieUpcomingItems;
+    UpcomingAdapter adapter;
     EditText etTitle;
     Button btnSearch;
     String title;
-    NowPlayingPresenter presenter;
+    UpcomingPresenter presenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_now_playing);
+        setContentView(R.layout.activity_upcoming);
+
 
         setupVar();
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new NowPlayingAdapter(this);
-        adapter.setListMovie(movieNPItems);
+        adapter = new UpcomingAdapter(this);
+        adapter.setListMovieUpcoming(movieUpcomingItems);
         recyclerView.setAdapter(adapter);
         adapter.notifyDataSetChanged();
 
 
-        presenter = new NowPlayingPresenter(this);
-        presenter.getMovieNPItems();
+        presenter = new UpcomingPresenter(this);
+        presenter.getMovieUpcomingItems();
 
         showActionBar();
-
-
     }
+
+
 
     private void showActionBar(){
         ActionBar actionbar = getSupportActionBar();
         if(actionbar != null) {
-            actionbar.setTitle("Now Playing Movie");
+            actionbar.setTitle("Upcoming Movie");
             actionbar.setDisplayHomeAsUpEnabled(true);
         }
     }
@@ -74,21 +75,26 @@ public class NowPlayingActivity extends AppCompatActivity implements NowPlayingV
         recyclerView = (RecyclerView) findViewById(R.id.recycler_view);
         etTitle = (EditText) findViewById(R.id.et_title);
         btnSearch = (Button) findViewById(R.id.btn_searchTitle);
-        movieNPItems = new ArrayList<>();
+        movieUpcomingItems = new ArrayList<>();
 
     }
 
+
+
+
+
+
     @Override
-    public void requestMovieNP(StringRequest data) {
+    public void requestMovieUpcoming(StringRequest data) {
         RequestQueue queue = Volley.newRequestQueue(this);
         queue.add(data);
     }
 
     @Override
-    public void getMovieNPList(List<Movie> list) {
-        movieNPItems.clear();
-        movieNPItems.addAll(list);
-        Log.d("movieItemsActivity", movieNPItems.toString());
+    public void getMovieUpcomingList(List<Movie> list) {
+        movieUpcomingItems.clear();
+        movieUpcomingItems.addAll(list);
+        Log.d("movieItemsActivity", movieUpcomingItems.toString());
         adapter.notifyDataSetChanged();
     }
 }
