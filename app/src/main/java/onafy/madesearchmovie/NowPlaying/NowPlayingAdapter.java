@@ -59,12 +59,12 @@ public class NowPlayingAdapter extends RecyclerView.Adapter<NowPlayingAdapter.No
     }
 
     public class NowPlayingViewHolder extends RecyclerView.ViewHolder {
-       @BindView(R.id.tv_movie_name)
-            TextView tv_movieName;
+        @BindView(R.id.tv_movie_name)
+        TextView tv_movieName;
         @BindView(R.id.tv_movie_overview)
-                TextView tv_movieOverview;
+        TextView tv_movieOverview;
         @BindView(R.id.img_movie_poster)
-                ImageView img_moviePoster;
+        ImageView img_moviePoster;
 
         NowPlayingViewHolder(@NonNull View convertView) {
             super(convertView);

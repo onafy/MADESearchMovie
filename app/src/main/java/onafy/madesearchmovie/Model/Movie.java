@@ -9,17 +9,17 @@ public class Movie {
     private String movieOverview;
     private String moviePoster;
 
-    public  Movie(JSONObject object){
+    public Movie(JSONObject object) {
         try {
             String movieId = object.getString("id");
             String movieTitle = object.getString("title");
             String movieOverview = object.getString("overview");
-            String  moviePoster =  object.getString("poster_path");
+            String moviePoster = object.getString("poster_path");
             this.id = movieId;
             this.movieTitle = movieTitle;
             this.movieOverview = movieOverview;
             this.moviePoster = moviePoster;
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }

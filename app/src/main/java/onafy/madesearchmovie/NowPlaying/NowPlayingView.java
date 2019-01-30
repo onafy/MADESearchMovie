@@ -8,5 +8,6 @@ import onafy.madesearchmovie.Model.Movie;
 
 public interface NowPlayingView {
     void requestMovieNP(StringRequest data);
+
     void getMovieNPList(List<Movie> list);
 }

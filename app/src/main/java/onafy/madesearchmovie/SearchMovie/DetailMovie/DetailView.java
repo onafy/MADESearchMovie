@@ -9,7 +9,9 @@ import onafy.madesearchmovie.Model.MovieDetail;
 
 public interface DetailView {
     void requestDetail(StringRequest data);
+
     void getDetailList(List<MovieDetail> list);
+
     void getGenre(List<Genre> genres);
 
 }

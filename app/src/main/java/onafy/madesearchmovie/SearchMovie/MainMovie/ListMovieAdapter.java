@@ -15,8 +15,8 @@ import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import onafy.madesearchmovie.R;
 import onafy.madesearchmovie.Model.Movie;
+import onafy.madesearchmovie.R;
 import onafy.madesearchmovie.Util.EndPoint;
 
 public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.CategoryViewHolder> {
@@ -35,8 +35,6 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.Cate
     ListMovieAdapter(Context context) {
         this.context = context;
     }
-
-
 
 
     @NonNull
@@ -62,11 +60,11 @@ public class ListMovieAdapter extends RecyclerView.Adapter<ListMovieAdapter.Cate
 
     public class CategoryViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.tv_movie_name)
-           TextView tv_movieName;
+        TextView tv_movieName;
         @BindView(R.id.tv_movie_overview)
-            TextView tv_movieOverview;
+        TextView tv_movieOverview;
         @BindView(R.id.img_movie_poster)
-            ImageView img_moviePoster;
+        ImageView img_moviePoster;
 
         CategoryViewHolder(@NonNull View convertView) {
             super(convertView);

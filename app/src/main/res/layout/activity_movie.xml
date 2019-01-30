@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
+
     <ProgressBar
         android:layout_centerHorizontal="true"
         android:id="@+id/progressBar"
@@ -13,34 +13,35 @@
         android:layout_gravity="center_horizontal" />
 
     <LinearLayout
-        android:padding="10dp"
+        android:padding="@dimen/size_10"
         android:id="@+id/linearhori"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:weightSum="1"
-        >
+        android:weightSum="1">
+
         <EditText
             android:id="@+id/et_title"
-            android:layout_width="0dp"
-            android:layout_marginRight="5dp"
+            android:layout_width="@dimen/width_0"
+            android:layout_marginRight="@dimen/margin_5"
             android:layout_height="wrap_content"
             android:hint="Movie Title"
-            android:layout_weight="0.9"/>
+            android:layout_weight="0.9" />
+
         <Button
             android:id="@+id/btn_searchTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="SEARCH"
+            android:text="@string/search"
             android:background="@drawable/buttonshape"
-            android:layout_weight="0.1"
-            />
+            android:layout_weight="0.1" />
     </LinearLayout>
+
     <android.support.v7.widget.RecyclerView
         android:layout_below="@id/linearhori"
         android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:listitem="@layout/item_row_movie"/>
+        tools:listitem="@layout/item_row_movie" />
 </RelativeLayout>

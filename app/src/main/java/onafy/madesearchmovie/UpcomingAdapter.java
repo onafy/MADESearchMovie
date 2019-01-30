@@ -59,11 +59,11 @@ public class UpcomingAdapter extends RecyclerView.Adapter<UpcomingAdapter.Upcomi
 
     public class UpcomingViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.tv_movie_name)
-            TextView tv_movieName;
+        TextView tv_movieName;
         @BindView(R.id.tv_movie_overview)
-            TextView tv_movieOverview;
+        TextView tv_movieOverview;
         @BindView(R.id.img_movie_poster)
-            ImageView img_moviePoster;
+        ImageView img_moviePoster;
 
 
         UpcomingViewHolder(@NonNull View convertView) {

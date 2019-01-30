@@ -27,11 +27,10 @@ public class NowPlayingPresenter {
         return view;
     }
 
-    public void getMovieNPItems(){
+    public void getMovieNPItems() {
         final ArrayList<Movie> movieNPItems = new ArrayList<>();
         StringRequest getRequest = new StringRequest(Request.Method.GET, EndPoint.NOW_PLAYING,
-                new Response.Listener<String>()
-                {
+                new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         // response
@@ -41,7 +40,7 @@ public class NowPlayingPresenter {
                         try {
                             jsonObject = new JSONObject(responses);
                             JSONArray jsonArray = jsonObject.getJSONArray("results");
-                            for(int i=0; i<jsonArray.length(); i++){
+                            for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject movies = jsonArray.getJSONObject(i);
                                 Movie movieNPModel = new Movie(movies);
                                 movieNPItems.add(movieNPModel);
@@ -53,12 +52,11 @@ public class NowPlayingPresenter {
                         }
                     }
                 },
-                new Response.ErrorListener()
-                {
+                new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         // TODO Auto-generated method stub
-                        Log.d("ERROR","error => "+error.toString());
+                        Log.d("ERROR", "error => " + error.toString());
                     }
                 }
         );

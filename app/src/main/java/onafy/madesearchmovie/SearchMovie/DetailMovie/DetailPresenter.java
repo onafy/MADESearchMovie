@@ -21,7 +21,6 @@ public class DetailPresenter {
     private final DetailView view;
 
 
-
     public DetailPresenter(DetailView view) {
         this.view = view;
     }
@@ -32,12 +31,11 @@ public class DetailPresenter {
     }
 
 
-    public void getDetail(String idMovie){
+    public void getDetail(String idMovie) {
         final ArrayList<MovieDetail> movieDetails = new ArrayList<>();
         final ArrayList<Genre> movieGenres = new ArrayList<>();
-        StringRequest getRequest = new StringRequest(Request.Method.GET, EndPoint.DETAIL_MOVIE_1+ idMovie + EndPoint.DETAIL_MOVIE_2,
-                new Response.Listener<String>()
-                {
+        StringRequest getRequest = new StringRequest(Request.Method.GET, EndPoint.DETAIL_MOVIE_1 + idMovie + EndPoint.DETAIL_MOVIE_2,
+                new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         // response
@@ -48,29 +46,28 @@ public class DetailPresenter {
                             jsonObject = new JSONObject(responses);
                             JSONArray jsonArray = jsonObject.getJSONArray("genres");
                             Log.d("arraygenre", String.valueOf(jsonArray));
-                            for(int i=0; i<jsonArray.length(); i++){
+                            for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject genres = jsonArray.getJSONObject(i);
                                 Log.d("objectgenre", String.valueOf(genres));
                                 Genre movieGenre = new Genre(genres);
                                 movieGenres.add(movieGenre);
                                 view.getGenre(movieGenres);
                             }
-                             MovieDetail movieDetail = new MovieDetail(jsonObject);
-                             movieDetails.add(movieDetail);
-                             Log.d("List MovieDetails", String.valueOf(movieDetails));
-                              view.getDetailList(movieDetails);
+                            MovieDetail movieDetail = new MovieDetail(jsonObject);
+                            movieDetails.add(movieDetail);
+                            Log.d("List MovieDetails", String.valueOf(movieDetails));
+                            view.getDetailList(movieDetails);
 
                         } catch (JSONException e) {
                             e.printStackTrace();
                         }
                     }
                 },
-                new Response.ErrorListener()
-                {
+                new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         // TODO Auto-generated method stub
-                        Log.d("ERROR","error => "+error.toString());
+                        Log.d("ERROR", "error => " + error.toString());
                     }
                 }
         );

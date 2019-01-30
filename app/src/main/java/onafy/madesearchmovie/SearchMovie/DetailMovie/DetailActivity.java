@@ -20,13 +20,12 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import de.hdodenhof.circleimageview.CircleImageView;
 import jp.wasabeef.glide.transformations.BlurTransformation;
-import onafy.madesearchmovie.R;
 import onafy.madesearchmovie.Model.Genre;
 import onafy.madesearchmovie.Model.MovieDetail;
+import onafy.madesearchmovie.R;
 import onafy.madesearchmovie.Util.EndPoint;
 
 import static com.bumptech.glide.request.RequestOptions.bitmapTransform;
-
 
 
 public class DetailActivity extends AppCompatActivity implements DetailView {
@@ -69,10 +68,10 @@ public class DetailActivity extends AppCompatActivity implements DetailView {
     }
 
 
-    private void showActionBar(){
+    private void showActionBar() {
         ActionBar actionbar = getSupportActionBar();
-        if(actionbar != null) {
-            actionbar.setTitle("Detail Movie");
+        if (actionbar != null) {
+            actionbar.setTitle(R.string.detail);
             actionbar.setDisplayHomeAsUpEnabled(true);
         }
     }
@@ -116,12 +115,11 @@ public class DetailActivity extends AppCompatActivity implements DetailView {
     @Override
     public void getGenre(List<Genre> genres) {
         genre.setText("");
-        for(int a=0; a<genres.size();a++){
+        for (int a = 0; a < genres.size(); a++) {
             Log.d("genressize", String.valueOf(genres.size()));
-            if(a==0)
-            {
-                genre.append(genres.get(a).getGenreName()) ;;
-            }else {
+            if (a == 0) {
+                genre.append(genres.get(a).getGenreName());
+            } else {
                 genre.append(", \n" + genres.get(a).getGenreName());
             }
         }

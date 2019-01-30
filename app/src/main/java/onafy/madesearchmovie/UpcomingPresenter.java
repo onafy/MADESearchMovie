@@ -14,7 +14,6 @@ import org.json.JSONObject;
 import java.util.ArrayList;
 
 import onafy.madesearchmovie.Model.Movie;
-import onafy.madesearchmovie.NowPlaying.NowPlayingView;
 import onafy.madesearchmovie.Util.EndPoint;
 
 public class UpcomingPresenter {
@@ -28,11 +27,10 @@ public class UpcomingPresenter {
         return view;
     }
 
-    public void getMovieUpcomingItems(){
+    public void getMovieUpcomingItems() {
         final ArrayList<Movie> movieUpcomingItems = new ArrayList<>();
         StringRequest getRequest = new StringRequest(Request.Method.GET, EndPoint.UPCOMING,
-                new Response.Listener<String>()
-                {
+                new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
                         // response
@@ -42,7 +40,7 @@ public class UpcomingPresenter {
                         try {
                             jsonObject = new JSONObject(responses);
                             JSONArray jsonArray = jsonObject.getJSONArray("results");
-                            for(int i=0; i<jsonArray.length(); i++){
+                            for (int i = 0; i < jsonArray.length(); i++) {
                                 JSONObject movies = jsonArray.getJSONObject(i);
                                 Movie movieUpcomingModel = new Movie(movies);
                                 movieUpcomingItems.add(movieUpcomingModel);
@@ -54,12 +52,11 @@ public class UpcomingPresenter {
                         }
                     }
                 },
-                new Response.ErrorListener()
-                {
+                new Response.ErrorListener() {
                     @Override
                     public void onErrorResponse(VolleyError error) {
                         // TODO Auto-generated method stub
-                        Log.d("ERROR","error => "+error.toString());
+                        Log.d("ERROR", "error => " + error.toString());
                     }
                 }
         );

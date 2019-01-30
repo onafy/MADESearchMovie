@@ -8,5 +8,6 @@ import onafy.madesearchmovie.Model.Movie;
 
 public interface UpcomingView {
     void requestMovieUpcoming(StringRequest data);
+
     void getMovieUpcomingList(List<Movie> list);
 }

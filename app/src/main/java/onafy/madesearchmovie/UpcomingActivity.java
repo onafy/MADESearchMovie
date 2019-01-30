@@ -1,14 +1,12 @@
 package onafy.madesearchmovie;
 
+import android.os.Bundle;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.EditText;
 
 import com.android.volley.RequestQueue;
 import com.android.volley.toolbox.StringRequest;
@@ -21,9 +19,9 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import onafy.madesearchmovie.Model.Movie;
 
-public class UpcomingActivity extends AppCompatActivity implements UpcomingView{
+public class UpcomingActivity extends AppCompatActivity implements UpcomingView {
     @BindView(R.id.recycler_view)
-        RecyclerView recyclerView;
+    RecyclerView recyclerView;
 
     ArrayList<Movie> movieUpcomingItems;
     UpcomingAdapter adapter;
@@ -55,11 +53,10 @@ public class UpcomingActivity extends AppCompatActivity implements UpcomingView{
     }
 
 
-
-    private void showActionBar(){
+    private void showActionBar() {
         ActionBar actionbar = getSupportActionBar();
-        if(actionbar != null) {
-            actionbar.setTitle("Upcoming Movie");
+        if (actionbar != null) {
+            actionbar.setTitle(R.string.upcoming);
             actionbar.setDisplayHomeAsUpEnabled(true);
         }
     }
@@ -74,9 +71,6 @@ public class UpcomingActivity extends AppCompatActivity implements UpcomingView{
                 return super.onOptionsItemSelected(item);
         }
     }
-
-
-
 
 
     @Override
