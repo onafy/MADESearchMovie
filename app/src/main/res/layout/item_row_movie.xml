@@ -6,11 +6,10 @@
     android:padding="@dimen/size_10">
 
     <ImageView
+        android:contentDescription="@string/movie_poster"
         android:layout_width="@dimen/poster_row_width"
         android:layout_height="@dimen/poster_row_height"
-        android:id="@+id/img_movie_poster"
-        android:layout_centerVertical="true"
-        android:layout_alignParentLeft="true" />
+        android:id="@+id/img_movie_poster" />
 
     <LinearLayout
         android:padding="@dimen/size_10"
@@ -23,10 +22,8 @@
             android:id="@+id/tv_movie_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Movie Title"
+            android:text="@string/movie_title"
             android:layout_marginBottom="@dimen/margin_5"
-            android:layout_toRightOf="@+id/img_movie_poster"
-            android:layout_centerVertical="true"
             android:textSize="@dimen/textsize_20"
             android:textStyle="bold" />
 
@@ -34,10 +31,8 @@
             android:id="@+id/tv_movie_overview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:text="Movie Description"
+            android:text="@string/movie_description"
             android:layout_marginBottom="@dimen/margin_5"
-            android:layout_toRightOf="@+id/img_movie_poster"
-            android:layout_centerVertical="true"
             android:textSize="@dimen/textsize_13" />
     </LinearLayout>
 </LinearLayout>

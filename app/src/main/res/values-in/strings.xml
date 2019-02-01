@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">MADESearchMovie</string>
+    <string name="title">Judul</string>
+    <string name="tagline">tagline</string>
+    <string name="rating">Peringkat</string>
+    <string name="duration">Durasi</string>
+    <string name="language">Bahasa</string>
+    <string name="release">Tayang</string>
+    <string name="overview">Sinopsis</string>
+    <string name="genre">Tipe</string>
+    <string name="detail">Detail Film</string>
+    <string name="now_playing">Film Sedang Tayang</string>
+    <string name="upcoming">Film Akan Tayang</string>
+    <string name="search_movie">Pencarian Film</string>
+    <string name="setting">Pengaturan Bahasa</string>
+    <string name="search">Cari</string>
+    <string name="movie_title">Judul Film</string>
+    <string name="movie_description">Deskripsi FIlm</string>
+</resources>

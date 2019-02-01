@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="linear_padding">15dp</dimen>
+    <dimen name="backdrop_height">140dp</dimen>
+    <dimen name="detail_poster_width">120dp</dimen>
+    <dimen name="detail_poster_height">120dp</dimen>
+    <dimen name="margin_15">15dp</dimen>
+    <dimen name="title_size">22sp</dimen>
+    <dimen name="width_0">0dp</dimen>
+    <dimen name="textsize_20">20sp</dimen>
+    <dimen name="textsize_15">15sp</dimen>
+    <dimen name="margin_5">6dp</dimen>
+    <dimen name="margin_20">20dp</dimen>
+    <dimen name="size_10">10dp</dimen>
+    <dimen name="poster_row_width">95dp</dimen>
+    <dimen name="poster_row_height">130dp</dimen>
+    <dimen name="size_130">130dp</dimen>
+    <dimen name="textsize_13">13sp</dimen>
+    <!-- Default screen margins, per the Android Design guidelines. -->
+</resources>

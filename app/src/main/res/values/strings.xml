@@ -12,5 +12,10 @@
     <string name="now_playing">Now Playing Movie</string>
     <string name="upcoming">Upcoming Movie</string>
     <string name="setting">Language Setting</string>
+    <string name="search_movie">Search Movie</string>
     <string name="search">Search</string>
+    <string name="movie_title">Movie Title</string>
+    <string name="movie_description">Movie Description</string>
+    <string name="movie_poster">movie poster</string>
+    <string name="movie_backdrop">movie_backdrop</string>
 </resources>
