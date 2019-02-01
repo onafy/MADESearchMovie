@@ -37,7 +37,7 @@ public final class MoviePresenter {
                 new Response.Listener<String>() {
                     @Override
                     public void onResponse(String response) {
-                        // response
+            
                         Log.d("Response", response);
                         try {
                             JSONObject jsonObject = new JSONObject(response);
